@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>İletişim Formu</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      background-image: url('img/arkaplan.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; 
+    }
+    form {
+      background: rgb(179, 195, 218);
+      padding: 2rem; /* (css'te yorum satırları) Padding: html'de ögenin içindeki yazıyla kenarlığı arasındaki boşluk. rem(root em):sayfanın kök yazı boyutuna göre ayarlamak için. 1rem genelde 16pixel */
+      border-radius: 10px; /* border-radius, bir kutunun (div, button, resim vs.) köşelerini yuvarlamak için */ 
+      max-width: 500px;
+      margin: auto; /* Dış boşluk */ 
+    }
+    label {/* Form elemanlarının başlığı. Adınız, Email gibi */
+      display: block; /* Her label, yeni satıra geçsin. Altındaki input’la alt alta hizalansın */
+      margin-top: 1rem; /* Label'ın üstüne 1 rem(yaklaşık 16px) boşluk bırakır; form alanları arasında boşluk olur, yapışmazlar */
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.5rem; /* İç boşluk */
+      margin-top: 0.3rem;/* Dış boşluk */
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <form @submit.prevent>
+    <h2>İletişim Formu</h2>
+
+    <label>Ad:</label>
+    <input type="text" v-model="form.ad">
+
+    <label>Soyad:</label>
+    <input type="text" v-model="form.soyad">
+
+    <label>Email:</label>
+    <input type="text" v-model="form.email">
+
+    <label>Telefon:</label>
+    <input type="text" v-model="form.telefon">
+
+    <label>Cinsiyet:</label>
+    <select v-model="form.cinsiyet">
+      <option value="">Seçiniz</option>
+      <option>Kadın</option>
+      <option>Erkek</option>
+      <option>Belirtmek istemiyorum</option>
+    </select>
+
+    <label>Mesaj:</label>
+    <textarea rows="4" v-model="form.mesaj"></textarea>
+
+    <!-- Düğmeler -->
+    <button type="button" @click="temizle">Temizle</button>
+    <button type="button" @click="jsKontrol">JS ile Kontrol</button>
+    <button type="button" @click="vueKontrol">Vue ile Kontrol ve Gönder</button>
+  </form>
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      form: {
+        ad: "",
+        soyad: "",
+        email: "",
+        telefon: "",
+        cinsiyet: "",
+        mesaj: ""
+      }
+    };
+  },
+  methods: {
+    temizle() {
+      this.form = {
+        ad: "",
+        soyad: "",
+        email: "",
+        telefon: "",
+        cinsiyet: "",
+        mesaj: ""
+      };
+    },
+    jsKontrol() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (this.form.email === "" || !emailRegex.test(this.form.email)) {
+        alert("Email geçerli değil!");
+        return;
+      }
+      if (!/^\d+$/.test(this.form.telefon)) {
+        alert("Telefon sadece rakamlardan oluşmalıdır.");
+        return;
+      }
+      if (!this.form.ad || !this.form.soyad || !this.form.mesaj || !this.form.cinsiyet) {
+        alert("Lütfen tüm alanları doldurun.");
+        return;
+      }
+      alert("JavaScript kontrolü başarılı!");
+    },
+    vueKontrol() { 
+      // Form doğrulandıysa başka sayfaya yönlendirme yapılabilir
+      const query = new URLSearchParams(this.form).toString();
+      window.location.href = `sonuc.html?${query}`;
+    }
+  }
+}).mount("#app");
+</script>
+
+</body>
+</html>

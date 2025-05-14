@@ -1,0 +1,19 @@
+ body {
+      background-image: url('img/arkaplan.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;     /* kullanıcı sayfayı aşağı/yukarı kaydırdığında, arka plan  sabit kalır (css youm satırı)*/
+    }
+
+    .navbar {
+  background-color: #e0e0e0;
+}
+
+h1 {
+  color: #ffffff; 
+}
+
+p {
+  color: #ffffff;  
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Sonuçları</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      background-color: #f1f8e9;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    .kutu {
+      background: white;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app" class="kutu">
+  <h2>Gönderilen Bilgiler</h2>
+  <p><strong>Ad:</strong> {{ form.ad }}</p>
+  <p><strong>Soyad:</strong> {{ form.soyad }}</p>
+  <p><strong>Email:</strong> {{ form.email }}</p>
+  <p><strong>Telefon:</strong> {{ form.telefon }}</p>
+  <p><strong>Cinsiyet:</strong> {{ form.cinsiyet }}</p>
+  <p><strong>Mesaj:</strong> {{ form.mesaj }}</p>
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      form: {
+        ad: params.get("ad") || "",
+        soyad: params.get("soyad") || "",
+        email: params.get("email") || "",
+        telefon: params.get("telefon") || "",
+        cinsiyet: params.get("cinsiyet") || "",
+        mesaj: params.get("mesaj") || ""
+      }
+    };
+  }
+}).mount("#app");
+</script>
+
+</body>
+</html>
