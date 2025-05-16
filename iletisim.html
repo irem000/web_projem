@@ -4,122 +4,190 @@
   <meta charset="UTF-8">
   <title>İletişim Formu</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background-image: url('img/arkaplan.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; 
+      background-attachment: fixed;
     }
+
+    .navbar {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
     form {
       background: rgb(179, 195, 218);
-      padding: 2rem; /* (css'te yorum satırları) Padding: html'de ögenin içindeki yazıyla kenarlığı arasındaki boşluk. rem(root em):sayfanın kök yazı boyutuna göre ayarlamak için. 1rem genelde 16pixel */
-      border-radius: 10px; /* border-radius, bir kutunun (div, button, resim vs.) köşelerini yuvarlamak için */ 
+      padding: 2rem;  /* (css'te yorum satırları) Padding: html'de ögenin içindeki yazıyla kenarlığı arasındaki boşluk.
+      rem(root em):sayfanın kök yazı boyutuna göre ayarlamak için. 1rem genelde 16pixel*/
+      border-radius: 10px;  /* border-radius, bir kutunun (div, button, resim vs.) köşelerini yuvarlamak için */ 
       max-width: 500px;
-      margin: auto; /* Dış boşluk */ 
+      margin: auto;  /* Dış boşluk */ 
     }
-    label {/* Form elemanlarının başlığı. Adınız, Email gibi */
+
+    label { /* Form elemanlarının başlığı. Adınız, Email gibi */
       display: block; /* Her label, yeni satıra geçsin. Altındaki input’la alt alta hizalansın */
       margin-top: 1rem; /* Label'ın üstüne 1 rem(yaklaşık 16px) boşluk bırakır; form alanları arasında boşluk olur, yapışmazlar */
     }
+
     input, textarea, select {
       width: 100%;
       padding: 0.5rem; /* İç boşluk */
       margin-top: 0.3rem;/* Dış boşluk */
     }
-    button {
-      margin-top: 1rem;
-      padding: 0.6rem 1.5rem;
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button-group button {
+      padding: 0.8rem 1.2rem;
+      flex: 1;
+      min-width: 130px;
     }
   </style>
 </head>
+
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand">Benim Sitem</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<div id="app">
-  <form @submit.prevent>
-    <h2>İletişim Formu</h2>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="webOdev.html">Hakkımda</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
+          <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+          <li class="nav-item"><a class="nav-link" href="miraslarimiz.html">Mirasımız</a></li>
+          <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="iletisim.html">İletişim</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <label>Ad:</label>
-    <input type="text" v-model="form.ad">
+  <!-- Form -->
+  <div id="app">
+    <form @submit.prevent>
+      <h2>İletişim Formu</h2>
 
-    <label>Soyad:</label>
-    <input type="text" v-model="form.soyad">
+      <label>Ad:</label>
+      <input type="text" v-model="form.ad">
 
-    <label>Email:</label>
-    <input type="text" v-model="form.email">
+      <label>Soyad:</label>
+      <input type="text" v-model="form.soyad">
 
-    <label>Telefon:</label>
-    <input type="text" v-model="form.telefon">
+      <label>Email:</label>
+      <input type="text" v-model="form.email">
 
-    <label>Cinsiyet:</label>
-    <select v-model="form.cinsiyet">
-      <option value="">Seçiniz</option>
-      <option>Kadın</option>
-      <option>Erkek</option>
-      <option>Belirtmek istemiyorum</option>
-    </select>
+      <label>Telefon:</label>
+      <input type="text" v-model="form.telefon">
 
-    <label>Mesaj:</label>
-    <textarea rows="4" v-model="form.mesaj"></textarea>
+      <label>Cinsiyet:</label>
+      <select v-model="form.cinsiyet">
+        <option value="">Seçiniz</option>
+        <option>Kadın</option>
+        <option>Erkek</option>
+        <option>Belirtmek istemiyorum</option>
+      </select>
 
-    <!-- Düğmeler -->
-    <button type="button" @click="temizle">Temizle</button>
-    <button type="button" @click="jsKontrol">JS ile Kontrol</button>
-    <button type="button" @click="vueKontrol">Vue ile Kontrol ve Gönder</button>
-  </form>
-</div>
+      <label>Daha önce bizimle iletişime geçtiniz mi?</label>
+      <div class="radio-group">
+        <label><input type="radio" v-model="form.iletisimDurumu" value="Evet"> Evet</label>
+        <label><input type="radio" v-model="form.iletisimDurumu" value="Hayır"> Hayır</label>
+      </div>
 
-<script>
-const { createApp } = Vue;
+      <label>Mesaj:</label>
+      <textarea rows="4" v-model="form.mesaj"></textarea>
 
-createApp({
-  data() {
-    return {
-      form: {
-        ad: "",
-        soyad: "",
-        email: "",
-        telefon: "",
-        cinsiyet: "",
-        mesaj: ""
+      <!-- Düğmeler -->
+      <div class="button-group">
+        <button type="button" @click="temizle">Temizle</button>
+        <button type="button" @click="jsKontrol">JS ile Kontrol</button>
+        <button type="button" @click="vueKontrol">Vue ile Kontrol ve Gönder</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Vue.js -->
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          form: {
+            ad: "",
+            soyad: "",
+            email: "",
+            telefon: "",
+            cinsiyet: "",
+            mesaj: "",
+            iletisimDurumu: ""
+          }
+        };
+      },
+      methods: {
+        temizle() {
+          this.form = {
+            ad: "",
+            soyad: "",
+            email: "",
+            telefon: "",
+            cinsiyet: "",
+            mesaj: "",
+            iletisimDurumu: ""
+          };
+        },
+        jsKontrol() {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (this.form.email === "" || !emailRegex.test(this.form.email)) {
+            alert("Email geçerli değil!");
+            return;
+          }
+          if (!/^\d+$/.test(this.form.telefon)) {
+            alert("Telefon sadece rakamlardan oluşmalıdır.");
+            return;
+          }
+          if (!this.form.ad || !this.form.soyad || !this.form.mesaj || !this.form.cinsiyet || !this.form.iletisimDurumu) {
+            alert("Lütfen tüm alanları doldurun.");
+            return;
+          }
+          alert("JavaScript kontrolü başarılı!");
+        },
+        vueKontrol() {
+          const query = new URLSearchParams(this.form).toString();
+          window.location.href = `sonuc.html?${query}`;
+        }
       }
-    };
-  },
-  methods: {
-    temizle() {
-      this.form = {
-        ad: "",
-        soyad: "",
-        email: "",
-        telefon: "",
-        cinsiyet: "",
-        mesaj: ""
-      };
-    },
-    jsKontrol() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (this.form.email === "" || !emailRegex.test(this.form.email)) {
-        alert("Email geçerli değil!");
-        return;
-      }
-      if (!/^\d+$/.test(this.form.telefon)) {
-        alert("Telefon sadece rakamlardan oluşmalıdır.");
-        return;
-      }
-      if (!this.form.ad || !this.form.soyad || !this.form.mesaj || !this.form.cinsiyet) {
-        alert("Lütfen tüm alanları doldurun.");
-        return;
-      }
-      alert("JavaScript kontrolü başarılı!");
-    },
-    vueKontrol() { 
-      // Form doğrulandıysa başka sayfaya yönlendirme yapılabilir
-      const query = new URLSearchParams(this.form).toString();
-      window.location.href = `sonuc.html?${query}`;
-    }
-  }
-}).mount("#app");
-</script>
+    }).mount("#app");
+  </script>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
