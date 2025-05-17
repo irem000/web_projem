@@ -15,7 +15,7 @@
       font-family: Arial, sans-serif;
 
       /* arka plan */
-      background-image: url('img/sakarya.png'); 
+      background-image: url('img/ap.png'); 
       background-size: cover; /* Ekranı kaplamsı için*/
       background-position: center;
       background-attachment: fixed; /* Arka plan resminin sabit kalması için*/
@@ -54,11 +54,12 @@
     }
     /* Yeni arka plan rengi sınıfı */
 .background-changed {
-  background-color: #a9c7b4; /* Değiştirilecek arka plan rengi */
+  background-color: #a9b5c7; /* Değiştirilecek arka plan rengi */
 }
 
   </style>
 </head>
+
 
 <body>
 
@@ -85,27 +86,30 @@
   </nav>
 
   <!-- Sayfa Başlığı -->
-  <div class="container mt-4">
-    <h1 class="text-center">Benim Şehrim: Sakarya</h1>
+  <div class="container mt-4"> <!-- Sayfa içeriğini ortalamak ve belli bir maksimum genişliğe oturtmak için kullanılır.
+    Responsive'dir; ekran boyutuna göre genişliği ayarlanır. mt → margin-top, 4 → Bootstrap ölçeğinde 4 birim boşluk (yaklaşık 24px) -->
+    <h4 class="text-center" style="color: aliceblue;" >İstanbul, Türkiye'nin en kalabalık şehri olmasının yanı sıra tarihi, kültürel ve ekonomik açıdan da en önemli merkezlerinden biridir.
+      Avrupa ve Asya kıtalarını birbirine bağlayan eşsiz coğrafi konumuyla dikkat çeken İstanbul, yüzyıllar boyunca farklı medeniyetlere ev sahipliği yapmıştır. 
+      Roma, Bizans ve Osmanlı İmparatorluklarına başkentlik yapan şehir; Ayasofya, Topkapı Sarayı, Sultanahmet Camii ve Galata Kulesi gibi tarihi yapılarıyla dünya çapında tanınır.
+       Boğaziçi'nin iki yakasında uzanan bu büyüleyici şehir, modern yapıları, kültürel etkinlikleri, doğal güzellikleri ve hareketli yaşamıyla hem yerli hem de yabancı ziyaretçileri cezbetmektedir.
+        Günümüzde İstanbul, yaklaşık 16 milyonluk nüfusuyla Türkiye’nin ekonomik, ticari ve sosyal hayatının merkezinde yer alır.</h4>
   </div>
 
   <!-- Slider -->
 <div id="slider" class="carousel slide container content-container" data-bs-ride="carousel" style="max-width:700px;">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="#sapanca"><img src="img/sapanca.png" class="d-block w-100"  width="470" height="430" ></a>
+      <a href="#bogazici"><img src="img/bogazici.png" class="d-block w-100"  width="470" height="430" ></a>
+      <!-- Linke gidebilmek için slider’daki <a href="#sapanca"> gibi bağlantılar, aşağıdaki section başlıklarıyla uyuşmalı -->
     </div>
     <div class="carousel-item">
-      <a href="#tarakli"><img src="img/tarakli.png" class="d-block w-100"  width="470" height="430" ></a>
+      <a href="#ayasofya"><img src="img/ayasofya.png" class="d-block w-100"  width="470" height="430" ></a>
     </div>
     <div class="carousel-item">
-      <a href="#depremmuzesi"><img src="img/depremmuzesi.png" class="d-block w-100"  width="470" height="430" ></a>
+      <a href="#topkapı"><img src="img/topkapı.png" class="d-block w-100"  width="470" height="430" ></a>
     </div>
     <div class="carousel-item">
-      <a href="#poyrazlar"><img src="img/poyrazlar.png" class="d-block w-100" width="470" height="430"></a>
-    </div>
-    <div class="carousel-item">
-      <a href="#kopru"><img src="img/kopru.png" class="d-block w-100" alt="kopru" width="470" height="430"></a>
+      <a href="#kapalıcarsı"><img src="img/kapalicarsi.png" class="d-block w-100" width="470" height="430"></a>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
@@ -121,46 +125,34 @@
 
   <!-- İçerik Bölümleri -->
   <div class="container content-container" style="max-width:700px;">
-    <section id="sapanca">
-      <h2>Sapanca Gölü</h2>
-      <p>Sapanca, Türkiye’nin Marmara Bölgesi’nde yer alan Sakarya iline bağlı doğal güzellikleriyle ünlü bir ilçedir.
-         Gölü, yaylaları, ormanları ve doğal yaşamı ile hem yerli hem yabancı turistlerin ilgisini çeken bir destinasyondur.
-         . Tatlı su gölü olan Sapanca Gölü, çevresindeki dağlardan beslenir ve muhteşem manzarasıyla yılın her mevsiminde ziyaretçilerine huzur sunar.
-          Göl çevresi yürüyüş, bisiklet, piknik ve fotoğrafçılık gibi aktiviteler için uygundur.
-        Sapanca’nın tarihi çok eskilere dayanır. Roma ve Bizans dönemlerine ait kalıntılara rastlanmıştır.
-         İlçede Osmanlı döneminden kalma camiler, çeşmeler ve köprüler de ziyaret edilebilir.</p>
+    <section id="bogazici">
+      <h2>Boğaziçi Köprüsü</h2>
+      <p>Boğaziçi Köprüsü, İstanbul’da Avrupa ve Asya kıtalarını birbirine bağlayan ilk köprüdür. 1973 yılında hizmete açılmıştır. 15 Temmuz Şehitler Köprüsü adıyla da bilinir. 
+        İstanbul’un simgelerinden biri olan köprü, sadece ulaşımı kolaylaştırmakla kalmaz, aynı zamanda şehrin siluetine estetik bir katkı sunar.
+         Geceleri ışıklandırmasıyla büyüleyici bir görüntü oluşturur.</p>
     </section>
 
-    <section id="taraklı">
-      <h2>Taraklı</h2>
-      <p>Taraklı, Sakarya iline bağlı, Osmanlı’dan izler taşıyan mimarisi, tarihi evleri ve doğal güzellikleri ile bilinen sakin ve huzurlu bir ilçedir. 
-        “Sakin Şehir” unvanına sahip Taraklı, doğayla iç içe bir yaşam arayanlar için adeta bir saklı cennettir
-        Taraklı, yöresel yemekleriyle de öne çıkar. Keşkek, Taraklı baklavası, ve doğal ürünlerle yapılan kahvaltılar, ziyaretçilerin damak zevkine hitap eder.
-        Aynı zamanda organik ürünler ve el yapımı hediyelik eşyalar da oldukça yaygındır..</p>
+    <section id="ayasofya">
+      <h2>Ayasoya</h2>
+      <p>Ayasofya Camii, İstanbul’un en önemli tarihi yapılarından biridir. İlk olarak 537 yılında Bizans İmparatoru I. Justinianus tarafından kilise olarak yaptırılmıştır.
+        1453’te İstanbul’un fethiyle Fatih Sultan Mehmet tarafından camiye çevrilmiştir. 1935 yılında müze olmuş, 2020 yılında tekrar cami olarak ibadete açılmıştır. 
+        Mimarisi, mozaikleri ve görkemiyle dünya çapında tanınan Ayasofya, hem Hristiyanlık hem de İslam tarihi açısından büyük öneme sahiptir.</p>
     </section>
 
-    <section id="depremmuzesi">
-      <h2>Deprem Müzesi</h2>
-      <p>TSakarya Deprem ve Kültür Müzesi, 17 Ağustos 1999 Marmara Depremi’nin acı hatıralarını yaşatmak ve deprem bilincini artırmak amacıyla kurulmuş, 
-        Türkiye’nin ilk deprem temalı müzelerinden biridir. 
-        Sakarya’nın Adapazarı ilçesinde yer alan müze, hem eğitim hem de farkındalık oluşturma yönünden büyük önem taşır.
-      Modern bir mimariye sahip olan müze binası, aynı zamanda deprem güvenli yapılar konusunda da örnek teşkil eder.
-       İç mekan düzenlemesi ve görsel anlatımlar, ziyaretçilerin kolayca bilgiye ulaşmasını ve öğrenmesini destekler niteliktedir.</p>
+    <section id="topkapı">
+      <h2>Topkapı Sarı</h2>
+      <p>Topkapı Sarayı, İstanbul’da yer alan ve Osmanlı padişahlarına yaklaşık 400 yıl boyunca ev sahipliği yapmış tarihi bir yapıdır.
+         1478 yılında Fatih Sultan Mehmet tarafından yaptırılmıştır. Hem padişahların yaşadığı yer hem de devletin yönetildiği merkez olmuştur. 
+         İçinde harem, kutsal emanetler, padişah kıyafetleri ve değerli eşyalar sergilenmektedir.
+         Günümüzde müze olarak ziyarete açıktır ve Osmanlı tarihine dair önemli izler taşır.</p>
     </section>
 
-    <section id="poyrazlar">
-      <h2>Poyrazlar</h2>
-      <p>Poyrazlar Gölü, Sakarya'nın merkezine sadece 10 kilometre uzaklıkta yer alan, doğayla baş başa kalmak isteyenler için eşsiz bir kaçış noktasıdır.
-         Göl çevresi, doğal zenginliği, huzurlu atmosferi ve aktiviteleriyle hem günübirlik ziyaretçiler hem de doğaseverler için ideal bir destinasyondur.
-        Ziyaretçiler göl çevresindecbisiklet sürebilir, doğa yürüyüşleri yapabilir,
-Kamp kurabilir, piknik alanlarında vakit geçirebilir. Ayrıca göl kenarında su bisikletleriyle küçük gezintiler de yapılabilmektedir.</p>
-    </section>
-
-     <section id="kopru">
-      <h2>Justinianus Köprüsü</h2>
-      <p>Köprü Bizans İmparatoru I. Justinianus döneminde, MS 6. yüzyılın ortalarında (yaklaşık 560'larda) inşa edilmiştir.
-        Amacı, Konstantinopolis (İstanbul) ile Anadolu'nun iç kesimleri arasındaki yolu daha güvenli ve sağlam hale getirmekti.
-        İpek Yolu’nun Anadolu kolunun önemli bir parçasıydı.</p>
+    <section id="kapalıcarsı">
+      <h2>Kapalı Çarşı</h2>
+      <p>Kapalıçarşı, İstanbul’un en eski ve en büyük çarşılarından biridir. 1461 yılında Fatih Sultan Mehmet’in emriyle inşa edilmiştir.
+         İçinde 60'tan fazla sokak ve 4.000’e yakın dükkân bulunur. Altın, takı, halı, baharat, deri ürünleri gibi birçok ürün burada satılır.
+         Hem yerli halkın hem de turistlerin ilgisini çeken bu çarşı, geleneksel Osmanlı ticaret kültürünü yaşatmaya devam etmektedir. 
+         Tarihi atmosferi ve kalabalığıyla İstanbul’un en canlı noktalarından biridir.</p>
     </section>
   </div>
 
