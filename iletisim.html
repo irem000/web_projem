@@ -20,7 +20,7 @@
     }
 
     form {
-      background: rgb(179, 195, 218);
+      background: rgb(100, 49, 35);
       padding: 2rem;  /* (css'te yorum satırları) Padding: html'de ögenin içindeki yazıyla kenarlığı arasındaki boşluk.
       rem(root em):sayfanın kök yazı boyutuna göre ayarlamak için. 1rem genelde 16pixel*/
       border-radius: 10px;  /* border-radius, bir kutunun (div, button, resim vs.) köşelerini yuvarlamak için */ 
@@ -31,6 +31,7 @@
     label { /* Form elemanlarının başlığı. Adınız, Email gibi */
       display: block; /* Her label, yeni satıra geçsin. Altındaki input’la alt alta hizalansın */
       margin-top: 1rem; /* Label'ın üstüne 1 rem(yaklaşık 16px) boşluk bırakır; form alanları arasında boşluk olur, yapışmazlar */
+      color: aliceblue;
     }
 
     input, textarea, select {
@@ -80,6 +81,7 @@
           <li class="nav-item"><a class="nav-link" href="miraslarimiz.html">Mirasımız</a></li>
           <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
           <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Giriş Yap</a></li>
         </ul>
       </div>
     </div>
@@ -88,7 +90,7 @@
   <!-- Form -->
   <div id="app">
     <form @submit.prevent>
-      <h2>İletişim Formu</h2>
+      <h2 style="color: aliceblue;" >İletişim Formu</h2>
 
       <label>Ad:</label>
       <input type="text" v-model="form.ad">
