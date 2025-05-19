@@ -45,6 +45,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <span class="navbar-brand">Benim Sitem</span>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="webOdev.html">Hakkımda</a></li>
@@ -59,39 +64,41 @@
   </div>
 </nav>
 
-<!-- Merkezde login kutusu -->
-<form class="login-form" action="login.php" method="POST" onsubmit="return validateForm()">
-  <h4 class="mb-3 text-center">Giriş Yap</h4>
-  <div class="mb-3">
-    <label for="email" class="form-label">Kullanıcı Adı (Mail)</label>
-    <input type="text" class="form-control" id="email" name="email" placeholder="b1812100001@sakarya.edu.tr">
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Şifre</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="b1812100001">
-  </div>
-  <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
-</form>
+ <div class="login-form">
+  <h2 class="text-center mb-4">Giriş Formu</h2>
+  <form action="login.php" method="POST">
+    <div class="mb-3">
+      <label for="kullanici" class="form-label">Kullanıcı Adı (Mail):</label>
+      <input type="text" id="kullanici" name="kullanici" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="sifre" class="form-label">Şifre:</label>
+      <input type="password" id="sifre" name="sifre" class="form-control" required>
+    </div>
+
+    <div class="d-grid">
+      <input type="submit" class="btn btn-primary" value="Giriş Yap">
+    </div>
+  </form>
+</div>
+
+
+<div class="collapse navbar-collapse" id="navbarNav">
 
 <script>
-  function validateForm() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const emailPattern = /^[^\s@]+@sakarya\.edu\.tr$/;
+  document.querySelector("form").addEventListener("submit", function(e) {
+    const kullanici = document.getElementById("kullanici").value;
+    const sifre = document.getElementById("sifre").value;
+    const emailRegex = /^[a-z0-9._%+-]+@sakarya\.edu\.tr$/;
 
-    if (email === "" || password === "") {
-      alert("Kullanıcı adı ve şifre boş bırakılamaz.");
-      return false;
+    if (!emailRegex.test(kullanici)) {
+      alert("Lütfen geçerli bir Sakarya Üniversitesi e-posta adresi giriniz.");
+      e.preventDefault();
     }
-
-    if (!emailPattern.test(email)) {
-      alert("Lütfen geçerli bir sakarya.edu.tr mail adresi giriniz.");
-      return false;
-    }
-
-    return true;
-  }
+  });
 </script>
+
 
 </body>
 </html>
