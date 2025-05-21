@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Form Sonuçları</title>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!--Vue.js, kullanıcı arayüzleri (UI) oluşturmak için kullanılan 
+  açık kaynaklı bir JavaScript framework'üdür. Özellikle formlar, veri gösterimi, butonlar, animasyonlar gibi etkileşimli öğeleri 
+  kolayca yönetmek için kullanılır.-->
   <style>
     body {
       background-color: #f1f8e9;
       font-family: Arial, sans-serif;
       padding: 2rem;
       background-image: url('img/ap.png');
+      background-size: cover; /* Ekranı kaplamsı için*/
+      background-position: center;
+      background-attachment: fixed; /* Arka plan resminin sabit kalması için*/
+    
     }
     .kutu {
       background: white;
@@ -33,7 +39,10 @@
 
 <div id="app" class="kutu">
   <h2>Gönderilen Bilgiler</h2>
-  <p><strong>Ad:</strong> {{ form.ad }}</p>
+  <p><strong>Ad:</strong> {{ form.ad }}</p> <!--{{ form.ad }} gibi ifadeler Vue.js'in template binding (şablon bağlama) özelliğidir.
+  form.ad değerini al ve bu satıra yaz anlamına gelir.
+  Vue.js, kullanıcı arayüzleri oluşturmak için kullanılan bir JS framework'üdür.
+  {{ form.ad }} gibi ifadeler, Vue'da veriyi HTML'e otomatik yazmak için kullanılır (template binding) -->
   <p><strong>Soyad:</strong> {{ form.soyad }}</p>
   <p><strong>Email:</strong> {{ form.email }}</p>
   <p><strong>Telefon:</strong> {{ form.telefon }}</p>
@@ -42,12 +51,16 @@
 </div>
 
 <script>
-const { createApp } = Vue;
+const { createApp } = Vue; /*Vue uygulamasını başlatmak için kullanılır.*/
 
-createApp({
-  data() {
-    const params = new URLSearchParams(window.location.search);
-    return {
+createApp({ /* Parantez içindeki {} nesnesi Vue'nun ayarlarını ve verilerini içerir.*/
+  data() { /* data() fonksiyonu, Vue bileşeni içinde verileri tanımlamak için kullanılır.*/
+    const params = new URLSearchParams(window.location.search); /* Tarayıcının adres çubuğundaki ?ad=...&email=... gibi URL parametrelerini alır.
+    URLSearchParams(...) → bu parçaları tek tek yakalamanı sağlar */
+
+return { /* form adında bir nesne döner. Bu nesne Vue'da kullanılabilir hale gelir.
+Örneğin: {{ form.ad }} → params.get("ad") yani URL’deki ad değerini gösterir.
+Eğer params.get(...) değeri yoksa, boş string "" koyar (hata olmasın diye) */
       form: {
         ad: params.get("ad") || "",
         soyad: params.get("soyad") || "",
@@ -58,7 +71,8 @@ createApp({
       }
     };
   }
-}).mount("#app");
+}).mount("#app"); /*  <div id="app"> içindeki {{ form.ad }} gibi şeyler Vue tarafından kontrol edilir.
+Vue’yu HTML’deki #app bölümüne bağlar */
 
 </script>
 
