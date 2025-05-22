@@ -28,7 +28,7 @@
       margin: auto;  /* Dış boşluk */ 
     }
 
-    label { /* Form elemanlarının başlığı. Adınız, Email gibi */
+    label { /* Form elemanlarının başlığı. Adınız, Email, Cinsiyet gibi */
       display: block; /* Her label, yeni satıra geçsin. Altındaki input’la alt alta hizalansın */
       margin-top: 1rem; /* Label'ın üstüne 1 rem(yaklaşık 16px) boşluk bırakır; form alanları arasında boşluk olur, yapışmazlar */
       color: aliceblue;
@@ -41,20 +41,20 @@
     }
 
     .radio-group {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
+      display: flex; /* Öğeleri tek satırda ya da dikeyde hizalamak */
+      gap: 1rem; /* öğeler arasındaki boşluğu belirtmek için kullanılır. 1 root em = genellikle 16px */ 
+      margin-top: 0.5rem; /*HTML öğesinin üst kısmına dış boşluk ekler*/
     }
 
     .radio-group label {
-      display: flex;
-      align-items: center;
+      display: flex; /* Öğeleri tek satırda ya da dikeyde hizalamak */
+      align-items: center; /*container içindeki öğeleri dikey eksende hizalamak için kullanılır*/
       gap: 0.4rem;
       margin-top: 0;
     }
 
     .button-group {
-      display: flex;
+      display: flex; /* Öğeleri tek satırda ya da dikeyde hizalamak */
       gap: 1rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
