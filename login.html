@@ -9,33 +9,30 @@
     body {
       margin: 0;
       padding-top: 80px; /* Navbar için yer bırak */
-      background-color: #f8f9fa;
       background-image: url('img/ap.png');
       background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background-attachment: fixed; /* Arka plan sayfa kaydırıldığında hareket etmez. */
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .login-form {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
+    .form {
+      background: white;  /* Formun arka planı beyazdır. */
+      padding: 30px; /*İçerikle kenar arasına 30 piksel boşluk bırakır*/
+      border-radius: 10px; /* Köşeleri yuvarlaklaştırır. */
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-      z-index: 1;
+      width: 100%; /*Form kutusu bulunduğu kapsayıcının genişliğini tamamen kaplar.*/
+      max-width: 400px; /* Ancak 400 pikseli geçemez. Mobilde %100 genişlik alırken, büyük ekranlarda sabit 400px ile ortada kalır*/
     }
 
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
+      position: fixed; /* Navbar'ı sabitler */
+      top: 0; /* En üste sabitler */
+      left: 0; /* En sola sabitler */
+      right: 0; /* En sağa sabitler */
+      z-index: 10; /* Diğer öğelere göre öne çıkarır. z-index: 10 olan başka bir kutunun altında kalır. */
     }
   </style>
 </head>
@@ -46,11 +43,11 @@
   <div class="container">
     <span class="navbar-brand">Benim Sitem</span>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <!-- Hamburger menü butonu.-->
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button><!--ootstrap 5 ile hazırlanmış bir mobil uyumlu (responsive) navigasyon menüsü butonudur-->
 
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbarNav"> <!--navbar menüsünün açılıp kapanabilir kısmını tanımlar.-->
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="webOdev.html">Hakkımda</a></li>
         <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
@@ -64,7 +61,7 @@
   </div>
 </nav>
 
- <div class="login-form">
+ <div class="form">
   <h2 class="text-center mb-4">Giriş Formu</h2>
   <form action="login.php" method="POST">
     <div class="mb-3">
@@ -83,9 +80,6 @@
   </form>
 </div>
 
-
-<div class="collapse navbar-collapse" id="navbarNav">
-
 <script>
   document.querySelector("form").addEventListener("submit", function(e) {
     const kullanici = document.getElementById("kullanici").value;
@@ -93,12 +87,13 @@
     const emailRegex = /^[a-z0-9._%+-]+@sakarya\.edu\.tr$/;
 
     if (!emailRegex.test(kullanici)) {
-      alert("Lütfen geçerli bir Sakarya Üniversitesi e-posta adresi giriniz.");
+      alert("Lütfen geçerli bir e-posta adresi giriniz.");
       e.preventDefault();
     }
   });
 </script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

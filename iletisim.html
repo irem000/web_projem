@@ -69,11 +69,18 @@
 </head>
 
 <body>
+  
+
   <!-- Navbar -->
    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- navigasyon barı (üst menü çubuğu) tanımlar (html yorum satırı) --> 
     <div class="container">
       <span class="navbar-brand">Benim Sitem</span>
-      <div class="collapse navbar-collapse">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="webOdev.html">Hakkımda</a></li>
           <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
@@ -125,17 +132,19 @@
       <div class="button-group">
         <button type="button" @click="temizle">Temizle</button>
         <button type="button" @click="jsKontrol">JS ile Kontrol</button>
-        <button type="button" @click="vueKontrol">Vue ile Kontrol ve Gönder</button>
+        <button type="button" @click="vueKontrol">Vue ile Kontrol/ Gönder</button>
       </div>
     </form>
   </div>
 
   <!-- Vue.js -->
   <script>
-    const { createApp } = Vue;
+    const { createApp } = Vue; /*Vue kütüphanesinden createApp fonksiyonunu alır. Bu fonksiyonla yeni bir Vue uygulaması başlatılır*/
 
-    createApp({
-      data() {
+    createApp({ /*Vue uygulamasını başlatır ve HTML’de id="app" olan elementin içine bu uygulamayı bağlar*/
+  /*createApp({ ... })→ Vue uygulamasını tanımlar. İçine data, methods gibi özellikler yazarsın.
+  .mount("#app")→ Vue uygulamasını HTML içindeki <div id="app">...</div> öğesine bağlar.*/
+      data() { /*Formda kullanılacak tüm veriler burada tanımlanmıştır. Başlangıçta hepsi boştur. Bu yapı sayesinde her form alanı Vue tarafından kontrol edilebilir olur */
         return {
           form: {
             ad: "",
@@ -149,7 +158,7 @@
         };
       },
       methods: {
-        temizle() {
+        temizle() { /*Tüm form alanlarını temizler (başlangıç değerlerine geri döner)*/
           this.form = {
             ad: "",
             soyad: "",
@@ -161,30 +170,31 @@
           };
         },
         jsKontrol() {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; /* Önce e-posta kontrolü yapar. Regex ile doğru formatta olup olmadığını kontrol eder*/
           if (this.form.email === "" || !emailRegex.test(this.form.email)) {
             alert("Email geçerli değil!");
             return;
           }
-          if (!/^\d+$/.test(this.form.telefon)) {
-            alert("Telefon sadece rakamlardan oluşmalıdır.");
+          if (!/^\d+$/.test(this.form.telefon)) { /* Telefon alanında sadece rakam olup olmadığını denetler. */
+            alert("Telefon sadece rakamlardan oluşmalıdır");
             return;
           }
           if (!this.form.ad || !this.form.soyad || !this.form.mesaj || !this.form.cinsiyet || !this.form.iletisimDurumu) {
-            alert("Lütfen tüm alanları doldurun.");
+            alert("Lütfen tüm alanları doldurun"); /* Boş alan kalmış mı diye bakar */
             return;
           }
-          alert("JavaScript kontrolü başarılı!");
+          alert("JavaScript kontrolü başarıyla tamamlandı"); /* Kontrolün başarıyla tamamlandığını belirtir. */
         },
-        vueKontrol() {
+        vueKontrol() { /*Vue kontrollü butona basıldığında tüm form verilerini alır, URL parametrelerine (?ad=...&soyad=...) çevirir, 
+        Kullanıcıyı sonuc.html sayfasına yönlendirir. Bu şekilde yeni sayfada form verileri URL üzerinden alınabilir. */
           const query = new URLSearchParams(this.form).toString();
           window.location.href = `sonuc.html?${query}`;
         }
       }
-    }).mount("#app");
+    }).mount("#app"); /* Vue.js uygulamasını HTML'deki belirli bir bölüme bağlamak (monte etmek) için kullanılır.*/
   </script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS Hamburger menu -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
